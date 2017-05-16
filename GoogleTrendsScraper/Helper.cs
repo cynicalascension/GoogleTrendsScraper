@@ -46,10 +46,6 @@ namespace GoogleTrendsScraper
 			Thread.CurrentThread.CurrentCulture = culture;
 			Thread.CurrentThread.CurrentUICulture = culture;
 
-			//cleanup output directories
-			DeleteAllFiles(ScreenshotPath);
-			DeleteAllFiles(GoogleResultPath);
-
 			//initialize the browser engine
 			var settings = new CefSettings { CachePath = CachePath };
 			Cef.Initialize(settings, true, null);
@@ -194,19 +190,6 @@ namespace GoogleTrendsScraper
 			}
 
 			return screenshotPath;
-		}
-
-		/// <summary>
-		/// Deletes all files in a target folder
-		/// </summary>
-		/// <param name="path">Path to the folder</param>
-		public static void DeleteAllFiles(string path)
-		{
-			var di = new DirectoryInfo(path);
-			foreach (var file in di.GetFiles())
-			{
-				file.Delete();
-			}
 		}
 
 		/// <summary>
